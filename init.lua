@@ -26,4 +26,4 @@ end
 require "lazy_setup"
 require "polish"
 
-vim.opt.termguicolors = false
+vim.opt.termguicolors = true
