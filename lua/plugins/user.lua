@@ -1,7 +1,10 @@
-
 -- You can also add or configure plugins by creating files in this `plugins/` folder
 -- PLEASE REMOVE THE EXAMPLES YOU HAVE NO INTEREST IN BEFORE ENABLING THIS FILE
 -- Here are some examples:
+vim.g.big_file = {
+  size = math.huge,
+  lines = math.huge,
+}
 
 ---@type LazySpec
 return {
@@ -47,8 +50,8 @@ return {
         },
       },
 
-      picker=  {
-        exclude= {
+      picker = {
+        exclude = {
           "**/.git/*",
           "**/node_modules/*",
           "**/.yarn/cache/*",
@@ -58,8 +61,8 @@ return {
           "**/.venv/*",
           "**/venv/*",
           "**/__pycache__/*",
-                "**/.next/*",
-        }
+          "**/.next/*",
+        },
       },
 
       exclude = {
@@ -72,10 +75,8 @@ return {
         "**/.venv/*",
         "**/venv/*",
         "**/__pycache__/*",
-        "**/.next/*"
+        "**/.next/*",
       },
-      
-    
     },
   },
 
@@ -122,5 +123,4 @@ return {
       )
     end,
   },
-
 }
