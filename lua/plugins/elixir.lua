@@ -3,26 +3,16 @@ return {
   version = "*",
   event = { "BufReadPre", "BufNewFile" },
   config = function()
-    local elixir = require("elixir")
-    local elixirls = require("elixir.elixirls")
-
+    local elixir = require "elixir"
     elixir.setup {
-      nextls = {enable = true},
-      elixirls = {
-        enable = true,
-        settings = elixirls.settings {
-          dialyzerEnabled = false,
-          enableTestLenses = false,
-        },
-        on_attach = function(client, bufnr)
-          vim.keymap.set("n", "<space>fp", ":ElixirFromPipe<cr>", { buffer = true, noremap = true })
-          vim.keymap.set("n", "<space>tp", ":ElixirToPipe<cr>", { buffer = true, noremap = true })
-          vim.keymap.set("v", "<space>em", ":ElixirExpandMacro<cr>", { buffer = true, noremap = true })
-        end,
-      },
-      projectionist = {
-        enable = true
-      }
+      nextls = { enable = false },
+      elixirls = { enable = false },
+      projectionist = { enable = true },
+    }
+
+    require("lspconfig").elixirls.setup {
+      cmd = { vim.fn.expand "~/.local/share/nvim/mason/bin/elixir-ls" },
+      root_dir = require("lspconfig.util").root_pattern "mix.exs",
     }
   end,
   dependencies = {
